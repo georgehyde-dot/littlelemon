@@ -1,10 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
-from django.contrib import admin 
-from django.urls import path 
-from .views import sayHello 
-  
-urlpatterns = [ 
-    path('', sayHello, name='sayHello'), 
-]
+
+def sayHello(request):
+    return HttpResponse('Hello World')
+
+def index(request):
+    return render(request, 'index.html', {})
