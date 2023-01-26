@@ -26,19 +26,19 @@ class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated]
 
-class MenuView(APIView):
+# class MenuView(APIView):
 
-    def get(self, request):
-        items = Menu.objects.all()
-        serializer = MenuSerializer(items, many=True)
-        return Response(serializer.data)
+#     def get(self, request):
+#         items = Menu.objects.all()
+#         serializer = MenuSerializer(items, many=True)
+#         return Response(serializer.data)
     
-    def post(self, request):
-        serializer = MenuSerializer(data=request.data)
+#     def post(self, request):
+#         serializer = MenuSerializer(data=request.data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"status":"success", "data": serializer.data})
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({"status":"success", "data": serializer.data})
 
 
 class UserViewSet (viewsets.ModelViewSet):
@@ -53,8 +53,10 @@ class UserViewSet (viewsets.ModelViewSet):
 class MenuItemView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
+    permission_classes = [IsAuthenticated]
