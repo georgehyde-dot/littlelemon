@@ -20,4 +20,5 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'email',
             'groups',
+            'password',
         ]
