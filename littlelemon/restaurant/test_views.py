@@ -5,8 +5,6 @@ from rest_framework import status
 from restaurant.models import Menu
 from restaurant.serializers import MenuSerializer
 import json
-from django.contrib.auth.models import User
-user = User.objects.create_user(username='testuser', password='testpassword')
 
 class MenuViewTest(TestCase):
     def setUp(self):
@@ -28,4 +26,4 @@ class MenuViewTest(TestCase):
         # serialize the data
         menus = Menu.objects.all()
         serializer = MenuSerializer(menus, many=True)
-        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(response.data['results'], serializer.data)
